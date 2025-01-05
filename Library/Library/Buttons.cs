@@ -19,14 +19,16 @@ public class Buttons
     {
         while (true)
         {
-            Console.WriteLine("Choose func:\r\n" +
-                     "1 - Add book\r\n" +
-                     "2 - Search books\r\n" +
-                     "3 - Sort books\r\n" +
-                     "4 - Group books\r\n" +
-                     "5 - Statistic\r\n" +
-                     "6 - Show all books\r\n" +
-                     "0 - Exit");
+            Console.WriteLine(
+                                     "Choose func:\r\n" +
+                                     "1 - Add book\r\n" +
+                                     "2 - Search books\r\n" +
+                                     "3 - Sort books\r\n" +
+                                     "4 - Group books\r\n" +
+                                     "5 - Statistic\r\n" +
+                                     "6 - Show all books\r\n" +
+                                     "0 - Exit"
+                            );
 
             string inputFunc = Console.ReadLine();
             switch (inputFunc)
@@ -42,7 +44,6 @@ public class Buttons
                     {
                         bookSearch.SearchByYear(bookNumber);
                         bookSearch.SearchByPages(bookNumber);
-
                         bookSearch.ShowAllSearchedBooks();
                     }
                     else
@@ -50,18 +51,19 @@ public class Buttons
                         bookSearch.SearchByAutor(inputSearch);
                         bookSearch.SearchByTitle(inputSearch);
                         bookSearch.SearchByGenre(inputSearch);
-
                         bookSearch.ShowAllSearchedBooks();
                     }
                     break;
                 case "3":
                     SorteBooks sorteBooks = new SorteBooks(listOfBooks);
-                    Console.WriteLine("Choose func for sorting:\r\n" +
-                "1 - Title\r\n" +
-                "2 - Author\r\n" +
-                "3 - Genre\r\n" +
-                "4-  Years\r\n" +
-                "5 - Pages\r\n");
+                    Console.WriteLine(
+                                        "Choose func for sorting:\r\n" +
+                                        "1 - Title\r\n" +
+                                        "2 - Author\r\n" +
+                                        "3 - Genre\r\n" +
+                                        "4-  Years\r\n" +
+                                        "5 - Pages\r\n"
+                                     );
                     string chooseSort = Console.ReadLine();
                     if (int.TryParse(chooseSort, out int sortTitle))
                     {
@@ -87,17 +89,48 @@ public class Buttons
                                 sorteBooks.SortByPages();
                                 sorteBooks.ShowAllSortedBooks();
                                 break;
-                                default: Console.WriteLine("You chose non-existent parametr!");
+                            default:
+                                Console.WriteLine("You chose non-existent parametr!");
                                 break;
                         }
                     }
                     else
                         Console.WriteLine("You enter non-numeric value!");
-                        break;
+                    break;
                 case "4":
-                    return;
+                    GroupBooks groupBooks = new GroupBooks(listOfBooks);
+                    Console.WriteLine(
+                                        "Choose func for grouping:\r\n" +
+                                        "1 - Author\r\n" +
+                                        "2 - Genre\r\n" +
+                                        "3 - Year\r\n"
+                                      );
+                    string chooseGroup = Console.ReadLine();
+                    if (int.TryParse(chooseGroup, out int sortGroup))
+                    {
+                        switch (chooseGroup)
+                        {
+                            case "1":
+                                groupBooks.GroupByAuthor();
+                                break;
+                            case "2":
+                                groupBooks.GroupByGenre();
+                                break;
+                            case "3":
+                                groupBooks.GroupByYear();
+                                break;
+                            default:
+                                Console.WriteLine("You chose non-existent parametr!");
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("You enter non-numeric value!");
+                        break;   
                 case "5":
-                    return;
+                    Statistic statistic = new Statistic(listOfBooks);
+                    statistic.ShowStatistic();
+                    break;
                 case "6":
                     this.listOfBooks.ShowBooks();
                     break;

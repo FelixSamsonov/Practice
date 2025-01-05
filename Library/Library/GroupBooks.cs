@@ -8,45 +8,66 @@ namespace Library;
 
 public class GroupBooks
 {
-    public class SortedBook
+    private readonly ListOfBooks listOfBooks;
+
+    public GroupBooks(ListOfBooks listOfBooks)
     {
-        private List<AddBook> books = new List<AddBook>();
-        public void GroupByAuthor()
-        {
-            var groupByAutor = books.GroupBy(x => x.Author);
-            foreach (var group in groupByAutor)
-            {
-                Console.WriteLine($"Autor: {group.Key}");
-                foreach (var book in group)
-                {
-                    Console.WriteLine($"  Title: {book.Title}, Author: {book.Author}");
-                }
-            }
-        }
-        public void GroupByGenre()
-        {
-            var groupByGenre = books.GroupBy(x => x.Genre);
-            foreach (var group in groupByGenre)
-            {
-                Console.WriteLine($"Genre: {group.Key}");
-                foreach (var book in group)
-                {
-                    Console.WriteLine($"  Title: {book.Title}, Autor: {book.Author}");
-                }
-            }
-        }
-        public void GroupByYear()
-        {
-            var groupByYear = books.GroupBy(x => x.Year);
-            foreach (var group in groupByYear)
-            {
-                Console.WriteLine($"Year: {group.Key}");
-                foreach (var book in group)
-                {
-                    Console.WriteLine($"  Title: {book.Title}, Autor: {book.Author}");
-                }
-            }
-        }
-       
+        this.listOfBooks = listOfBooks;
     }
+    public void GroupByAuthor()
+    {
+        var groupAutor = listOfBooks.Books.GroupBy(x => x.Title).ToList();
+        foreach (var group in groupAutor)
+        {
+            Console.WriteLine($"Autor: {group.Key}");
+            foreach (var book in group)
+            {
+                Console.WriteLine($"Title: {book.Title}");
+            }
+        }
+    }
+    public void GroupByGenre()
+    {
+        var groupGenre = listOfBooks.Books.GroupBy(x => x.Genre).ToList();
+        foreach (var group in groupGenre)
+        {
+            Console.WriteLine($"Genre: {group.Key}");
+            foreach (var book in group)
+            {
+                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}");
+            }
+        }
+    }
+    public void GroupByYear()
+    {
+        var groupYear = listOfBooks.Books.GroupBy(x => x.Year).ToList();
+        foreach (var group in groupYear)
+        {
+            Console.WriteLine($"Year: {group.Key}");
+            foreach (var book in group)
+            {
+                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}");
+            }
+        }
+    }
+        
+    //public void ShowAllGroupBooks()
+    //{
+    //    if (listOfBooks.Books.Count == 0)
+    //    {
+    //        Console.WriteLine("List of books is empty.");
+    //        return;
+    //    }
+
+    //    foreach (var group in listOfBooks.Books)
+    //    {
+    //        Console.WriteLine($"Autor: {group.Key}");
+    //        foreach (var book in group)
+    //        {
+    //            Console.WriteLine($"  Title: {book.Title}, Author: {book.Author}");
+    //        }
+    //    }
+    //}
+
 }
+

@@ -15,30 +15,36 @@ public class SorteBooks
     {
         this.listOfBooks = listOfBooks;
     }
-    public IEnumerable<AddBook> SortByTitle()
+    public void SortByTitle()
     {
-        var sorted = listOfBooks.Books.OrderBy(x => x.Title);
-        return sorted;
+        var sortedTitle = listOfBooks.Books.OrderBy(x => x.Title).ToList();
+        listOfBooks.Books.Clear(); 
+        listOfBooks.Books.AddRange(sortedTitle);
+
     }
-    public IEnumerable<AddBook> SortByAuthor()
+    public void SortByAuthor()
     {
-        var sorted = listOfBooks.Books.OrderBy(x => x.Author);
-        return sorted;
+        var sortedAuthor = listOfBooks.Books.OrderBy(x => x.Author).ToList();
+        listOfBooks.Books.Clear();
+        listOfBooks.Books.AddRange(sortedAuthor);
     }
-    public IEnumerable<AddBook> SortByGenre()
+    public void SortByGenre()
     {
-        var sorted = listOfBooks.Books.OrderBy(x => x.Genre);
-        return sorted;
+        var sortedGenre = listOfBooks.Books.OrderBy(x => x.Genre).ToList();
+        listOfBooks.Books.Clear();
+        listOfBooks.Books.AddRange(sortedGenre);
     }
-    public IEnumerable<AddBook> SortByYear()
+    public void SortByYear()
     {
-        var sorted = listOfBooks.Books.OrderBy(x => x.Year);
-        return sorted;
+        var sortedYear = listOfBooks.Books.OrderBy(x => x.Year).ToList();
+        listOfBooks.Books.Clear();
+        listOfBooks.Books.AddRange(sortedYear);
     }
-    public IEnumerable<AddBook> SortByPages()
+    public void SortByPages()
     {
-        var sorted = listOfBooks.Books.OrderBy(x => x.Pages);
-        return sorted;
+        var sortedPages = listOfBooks.Books.OrderBy(x => x.Pages).ToList();
+        listOfBooks.Books.Clear();
+        listOfBooks.Books.AddRange(sortedPages);
     }
     public void ShowAllSortedBooks()
     {

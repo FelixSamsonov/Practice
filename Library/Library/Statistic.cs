@@ -8,16 +8,19 @@ namespace Library;
 
 public class Statistic
 {
-    private List<AddBook> books = new List<AddBook>();
+    private readonly ListOfBooks listOfBooks;
 
+    public Statistic(ListOfBooks listOfBooks)
+    {
+        this.listOfBooks = listOfBooks;
+    }
     public void ShowStatistic()
     {
-        var countBooks = books.Count();
-        foreach (var book in books)
-        {
-            Console.WriteLine(book);
-        }
-        var statisticGenre = books.GroupBy(x => x.Genre);
+        var countBooks = listOfBooks.Books.Count();
+
+        Console.WriteLine($"Number of books in the library: {countBooks}");
+
+        var statisticGenre = listOfBooks.Books.GroupBy(x => x.Genre);
         foreach (var group in statisticGenre)
         {
             Console.WriteLine($"Genre: {group.Key}");
@@ -26,26 +29,36 @@ public class Statistic
                 Console.WriteLine($"  Title: {book.Title}, Autor: {book.Author}");
             }
         }
-        var averagePages = books.Average(x => x.Pages);
-        foreach (var pages in books)
+        var averagePages = listOfBooks.Books.Average(x => x.Pages);
+        Console.WriteLine($"Average number of pages is {averagePages}");
+
+        var oldestBook = listOfBooks.Books.Min(x => x.Year);
+        var oldestBookAuthor = listOfBooks.Books.Where(x => x.Year == oldestBook);
+
+        Console.WriteLine($"The oldest books in the library are from year \"{oldestBook}\", written by:");
+        foreach (var book in oldestBookAuthor)
         {
-            Console.WriteLine(pages);
+            Console.WriteLine($"- {book.Author} ({book.Title})");
         }
 
-        var oldestBook = books.Min(x => x.Year);
-        foreach (var oldest in books)
+        var newestBook = listOfBooks.Books.Min(x => x.Year);
+        var newestBookAuthor = listOfBooks.Books.Where(x => x.Year == newestBook);
+
+        Console.WriteLine($"The oldest books in the library are from year \"{newestBook}\", written by:");
+        foreach (var book in newestBookAuthor)
         {
-            Console.WriteLine(oldest);
+            Console.WriteLine($"- {book.Author} ({book.Title})");
         }
-        var youngesBook = books.Max(x => x.Year);
-        foreach (var oldest in books)
+
+        var bookWithMostPages = listOfBooks.Books.OrderByDescending(x => x.Pages).FirstOrDefault();
+
+        if (bookWithMostPages != null)
         {
-            Console.WriteLine(youngesBook);
+            Console.WriteLine($"The author of the book with the most pages is {bookWithMostPages.Author}");
         }
-        var authorBook = books.Max(x => x.Author);
-        foreach (var oldest in books)
+        else
         {
-            Console.WriteLine(oldest);
+            Console.WriteLine("The book list is empty.");
         }
 
     }
