@@ -8,26 +8,25 @@ namespace Library;
 
 public class ListOfBooks
 {
-    public List<AddBook> books = new List<AddBook>();
+    public List<AddBook> Books { get; private set;} = new List<AddBook>();
 
-    public void AddBookToList(string title, string author, string genre, int year, int pages)
+    public void AddBookToList(AddBook book)
     {
-        AddBook newBook = new AddBook(title, author, genre, year, pages);
-        books.Add(newBook);
-        Console.WriteLine($"Назва: {newBook.Title}, Автор: {newBook.Author} was successfully added.");
+        Books.Add(book);
+        Console.WriteLine($"Назва: {book.Title}, Автор: {book.Author} was successfully added.");
     }
     public void ShowBooks()
     {
-        if (books.Count == 0)
+        if (Books.Count == 0)
         {
-            Console.WriteLine("Список книг порожній.");
+            Console.WriteLine("Library is empty");
             return;
         }
 
-        Console.WriteLine("Список книг: ");
-        foreach (var book in books)
+        Console.WriteLine("List of books: ");
+        foreach (var book in Books)
         {
-            Console.WriteLine($"Назва: {book.Title}, Автор: {book.Author}, Жанр: {book.Genre}, Рік: {book.Year}, Сторінок: {book.Pages}");
+            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}");
         }
     }
 }

@@ -31,7 +31,7 @@ public class AddBook
         set 
         {
             if (value > 0)
-                value = year;
+                year = value;
             else
                 throw new ArgumentException("Year has to be more than 0");
         }
@@ -43,15 +43,9 @@ public class AddBook
         set
         {
             if (value > 0)
-                value = pages;
+                pages = value;
             else
                 throw new ArgumentException("Pages has to be more than 0");
         }
-    }
-    public static List<AddBook> LibraryBooks = new List<AddBook>();
-    public void AddToTheLibrary()
-    {
-        LibraryBooks.Add(this);
-        Console.WriteLine($"Book \"{Title}\" adds to the \"Library\"");
     }
 }

@@ -8,39 +8,44 @@ namespace Library;
 
 public class BookSearch
 {
-    private List<AddBook> books = new List<AddBook>();
+    private readonly ListOfBooks listOfBooks;
+
+    public BookSearch(ListOfBooks listOfBooks)
+    {
+        this.listOfBooks = listOfBooks;
+    }
 
     public IEnumerable<AddBook> SearchByTitle(string title)
     {
-        return books.Where(x => x.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+        return listOfBooks.Books.Where(x => x.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
     }
     public IEnumerable<AddBook> SearchByAutor(string author)
     {
-        return books.Where(x => x.Author.Contains(author, StringComparison.OrdinalIgnoreCase));
+        return listOfBooks.Books.Where(x => x.Author.Contains(author, StringComparison.OrdinalIgnoreCase));
     }
     public IEnumerable<AddBook> SearchByGenre(string genre)
     {
-        return books.Where(x => x.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase));
+        return listOfBooks.Books.Where(x => x.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase));
     }
     public IEnumerable<AddBook> SearchByYear(int year)
     {
-        return books.Where(x => x.Year == year);
+        return listOfBooks.Books.Where(x => x.Year == year);
     }
     public IEnumerable<AddBook> SearchByPages(int pages)
     {
-        return books.Where(x => x.Pages == pages);
+        return listOfBooks.Books.Where(x => x.Pages == pages);
     }
     public void ShowAllSearchedBooks()
     {
-        if (books.Count == 0)
+        if (listOfBooks.Books.Count == 0)
         {
-            Console.WriteLine("Список книг порожній.");
+            Console.WriteLine("List of books is empty");
             return;
         }
 
-        foreach (var book in books)
+        foreach (var book in listOfBooks.Books)
         {
-            Console.WriteLine($"Назва: {book.Title}, Автор: {book.Author}, Жанр: {book.Genre}, Рік: {book.Year}, Сторінок: {book.Pages}");
+            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}");
         }
     }
 }
