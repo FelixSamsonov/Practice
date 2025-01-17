@@ -37,7 +37,7 @@ public class Buttons
                     AddBook();
                     break;
                 case "2":
-                    Console.WriteLine("Enter search parameter : ");
+                    Console.WriteLine("Enter search parameter: ");
                     BookSearch bookSearch = new BookSearch(listOfBooks);
                     var inputSearch = Console.ReadLine();
                     if (int.TryParse(inputSearch, out int bookNumber))
@@ -126,7 +126,7 @@ public class Buttons
                     }
                     else
                         Console.WriteLine("You enter non-numeric value!");
-                        break;   
+                    break;
                 case "5":
                     Statistic statistic = new Statistic(listOfBooks);
                     statistic.ShowStatistic();
@@ -152,18 +152,113 @@ public class Buttons
         Console.Write("Author: ");
         string author = Console.ReadLine();
 
-        Console.Write("Genre: ");
-        string genre = Console.ReadLine();
+        Console.WriteLine(
+                                        "Choose type of genre:\r\n" +
+                                        "1 - Fiction\r\n" +
+                                        "2 - Non-Fiction\r\n" 
+                                        );
+        string genre = "Unknown";
+        string genreNumb = Console.ReadLine();
+        if(byte.TryParse(genreNumb, out byte genreType))
+        {
+            switch(genreType)
+            {
+                case 1:
+                    Console.WriteLine(
+                        "Choose genre for book:\r\n" +
+                                        "1 - Fantasy\r\n" +
+                                        "2 - Science Fiction\r\n" +
+                                        "3 - Romance\r\n" +
+                                        "4 - Detective\r\n" +
+                                        "5 - Thriller\r\n" +
+                                        "6 - Horror\r\n" +
+                                        "7 - Historical Fiction\\r\n" +
+                                        "8 - Realistic Fiction\r\n"
+                        );
+                    string genreFiction = Console.ReadLine();
+                    if(byte.TryParse(genreFiction, out byte genreTypeFiction))
+                    {
+                        switch(genreTypeFiction)
+                        {
+                            case 1:
+                                 genre = "Fantasy";
+                                break;
+                            case 2:
+                                 genre = "Science Fiction";
+                                break;
+                            case 3:
+                                genre = "Romance";
+                                break;
+                            case 4:
+                                genre = "Detective";
+                                break;
+                            case 5:
+                                genre = "Thriller";
+                                break;
+                            case 6:
+                                genre = "Horror";
+                                break;
+                            case 7:
+                                genre = "Historical Fiction";
+                                break;
+                            case 8:
+                                genre = "Realistic Fiction";
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Your choice doesn't exist");
+                    break;
+                case 2:
+                    Console.WriteLine(
+                        "Choose genre for book:\r\n" +
+                                        "1 - Biographies and Memoirs\r\n" +
+                                        "2 - Documentary\r\n" +
+                                        "3 - Self-help\r\n" +
+                                        "4 - Popular Science\r\n" +
+                                        "5 - Reference\r\n"
+                        );
+                    string genreNonFiction = Console.ReadLine();
+                    if (byte.TryParse(genreNonFiction, out byte genreTypeNonFiction))
+                    {
+                        switch (genreTypeNonFiction)
+                        {
+                            case 1:
+                                genre = "Biographies and Memoirs";
+                                break;
+                            case 2:
+                                genre = "Documentary";
+                                break;
+                            case 3:
+                                genre = "Self-help";
+                                break;
+                            case 4:
+                                genre = "Popular Science";
+                                break;
+                            case 5:
+                                genre = "Reference";
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Invalid choice");
+                        break;
+                default:
+                    Console.WriteLine("You chose incorrect variant");
+                    return;
+            }
+        }
+
 
         Console.Write("Year: ");
-        if (!int.TryParse(Console.ReadLine(), out int year) || year <= 0)
+        if (!ushort.TryParse(Console.ReadLine(), out ushort year))
         {
             Console.WriteLine("Invalid year.");
             return;
         }
 
         Console.Write("Pages: ");
-        if (!int.TryParse(Console.ReadLine(), out int pages) || pages <= 0)
+        if (!ushort.TryParse(Console.ReadLine(), out ushort pages) || pages <= 0)
         {
             Console.WriteLine("Invalid page count.");
             return;

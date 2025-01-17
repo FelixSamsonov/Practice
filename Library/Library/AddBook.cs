@@ -8,6 +8,7 @@ namespace Library;
 
 public class AddBook
 {
+    DateTime now = DateTime.Now;
     public string Title {  get; set; }
     public string Author { get; set; }
     public string Genre { get; set; }
@@ -30,10 +31,10 @@ public class AddBook
 
         set 
         {
-            if (value > 0)
+            if (value > 0 && value <= now.Year)
                 year = value;
             else
-                throw new ArgumentException("Year has to be more than 0");
+                throw new ArgumentException("Year has to be more than 0 and less than current year");
         }
     }
     public int Pages
