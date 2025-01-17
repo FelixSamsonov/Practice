@@ -9,8 +9,8 @@ namespace Library;
 public class AddBook
 {
     DateTime now = DateTime.Now;
-    public string Title {  get; set; }
-    public string Author { get; set; }
+    private string title;
+    private string author;
     public string Genre { get; set; }
     private int year;
     private int pages;
@@ -29,7 +29,7 @@ public class AddBook
     {
         get { return year; }
 
-        set 
+        set
         {
             if (value > 0 && value <= now.Year)
                 year = value;
@@ -49,4 +49,27 @@ public class AddBook
                 throw new ArgumentException("Pages has to be more than 0");
         }
     }
+    public string Title
+    {
+        get { return title; }
+        set
+        {
+            if (!String.IsNullOrEmpty(value))
+                title = value;
+            else
+                throw new ArgumentException("Title cann't be empty");
+        }
+    }
+    public string Author
+    {
+        get { return author; }
+        set
+        {
+            if (!String.IsNullOrEmpty(value))
+                author = value;
+            else
+                throw new ArgumentException("Author cann't be empty");
+        }
+    }
+  
 }
