@@ -15,25 +15,29 @@ public class BookSearch
         this.listOfBooks = listOfBooks;
     }
 
-    public IEnumerable<AddBook> SearchByTitle(string title)
+    public IEnumerable<ParametrsForBook> SearchByTitle(string title)
     {
         return listOfBooks.Books.Where(x => x.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
     }
-    public IEnumerable<AddBook> SearchByAutor(string author)
+    public IEnumerable<ParametrsForBook> SearchByAutor(string author)
     {
         return listOfBooks.Books.Where(x => x.Author.Contains(author, StringComparison.OrdinalIgnoreCase));
     }
-    public IEnumerable<AddBook> SearchByGenre(string genre)
+    public IEnumerable<ParametrsForBook> SearchByGenre(string genre)
     {
         return listOfBooks.Books.Where(x => x.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase));
     }
-    public IEnumerable<AddBook> SearchByYear(int year)
+    public IEnumerable<ParametrsForBook> SearchByYear(int year)
     {
         return listOfBooks.Books.Where(x => x.Year == year);
     }
-    public IEnumerable<AddBook> SearchByPages(int pages)
+    public IEnumerable<ParametrsForBook> SearchByPages(int pages)
     {
         return listOfBooks.Books.Where(x => x.Pages == pages);
+    }
+    public IEnumerable<ParametrsForBook> SearchByLanguage(string language)
+    {
+        return listOfBooks.Books.Where(x => x.Language.Contains(language, StringComparison.OrdinalIgnoreCase));
     }
     public void ShowAllSearchedBooks()
     {
@@ -45,7 +49,7 @@ public class BookSearch
 
         foreach (var book in listOfBooks.Books)
         {
-            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}");
+            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}, Language: {book.Language}");
         }
     }
 }

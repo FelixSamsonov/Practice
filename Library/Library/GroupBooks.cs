@@ -50,24 +50,17 @@ public class GroupBooks
             }
         }
     }
-        
-    //public void ShowAllGroupBooks()
-    //{
-    //    if (listOfBooks.Books.Count == 0)
-    //    {
-    //        Console.WriteLine("List of books is empty.");
-    //        return;
-    //    }
-
-    //    foreach (var group in listOfBooks.Books)
-    //    {
-    //        Console.WriteLine($"Autor: {group.Key}");
-    //        foreach (var book in group)
-    //        {
-    //            Console.WriteLine($"  Title: {book.Title}, Author: {book.Author}");
-    //        }
-    //    }
-    //}
-
+    public void GroupByLanguage()
+    {
+        var groupAutor = listOfBooks.Books.GroupBy(x => x.Language).ToList();
+        foreach (var group in groupAutor)
+        {
+            Console.WriteLine($"Autor: {group.Key}");
+            foreach (var book in group)
+            {
+                Console.WriteLine($"Title: {book.Title}");
+            }
+        }
+    }
 }
 

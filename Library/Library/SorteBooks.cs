@@ -46,6 +46,13 @@ public class SorteBooks
         listOfBooks.Books.Clear();
         listOfBooks.Books.AddRange(sortedPages);
     }
+    public void SortByLanguage()
+    {
+        var sortedTitle = listOfBooks.Books.OrderBy(x => x.Language).ToList();
+        listOfBooks.Books.Clear();
+        listOfBooks.Books.AddRange(sortedTitle);
+
+    }
     public void ShowAllSortedBooks()
     {
         if (listOfBooks.Books.Count == 0)

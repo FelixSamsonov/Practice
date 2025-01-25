@@ -8,9 +8,9 @@ namespace Library;
 
 public class ListOfBooks
 {
-    public List<AddBook> Books { get; private set;} = new List<AddBook>();
+    public List<ParametrsForBook> Books { get; private set;} = new List<ParametrsForBook>();
 
-    public void AddBookToList(AddBook book)
+    public void AddBookToList(ParametrsForBook book)
     {
         Books.Add(book);
         Console.WriteLine($"Назва: {book.Title}, Автор: {book.Author} was successfully added.");
@@ -26,7 +26,7 @@ public class ListOfBooks
         Console.WriteLine("List of books: ");
         foreach (var book in Books)
         {
-            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}");
+            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, Year: {book.Year}, Pages: {book.Pages}, Language: {book.Language}");
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library;
 
-public class AddBook
+public class ParametrsForBook
 {
     DateTime now = DateTime.Now;
     private string title;
@@ -14,15 +14,17 @@ public class AddBook
     public string Genre { get; set; }
     private int year;
     private int pages;
+    public string Language {  get; set; }
 
 
-    public AddBook(string title, string author, string genre, int year, int pages)
+    public ParametrsForBook(string title, string author, string genre, int year, int pages, string language)
     {
         Title = title;
         Author = author;
         Genre = genre;
         Year = year;
         Pages = pages;
+        Language = language;
     }
 
     public int Year
@@ -70,6 +72,5 @@ public class AddBook
             else
                 throw new ArgumentException("Author cann't be empty");
         }
-    }
-  
+    }  
 }
