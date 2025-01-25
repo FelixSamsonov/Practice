@@ -55,7 +55,7 @@ public class GroupBooks
         var groupAutor = listOfBooks.Books.GroupBy(x => x.Language).ToList();
         foreach (var group in groupAutor)
         {
-            Console.WriteLine($"Autor: {group.Key}");
+            Console.WriteLine($"Language: {group.Key}");
             foreach (var book in group)
             {
                 Console.WriteLine($"Title: {book.Title}");
