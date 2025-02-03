@@ -24,6 +24,13 @@
 					<td>@book.Year.ToString()</td>
 					<td>@book.Pages.ToString()</td>
 					<td>@book.Language</td>
+					<td>
+						<a asp-action="EditBook" asp-route-id="@book.Id" class="button alert-warning btn-sm">Edite</a>
+						<form asp-action="DeleteBook" method="post" style="display:inline;">
+							<input type="hidden" name="Id" value="@book.Id"/>
+							<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+						</form>
+					</td>
 				</tr>
 			}
 		</tbody>

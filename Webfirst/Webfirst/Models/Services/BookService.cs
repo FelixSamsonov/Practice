@@ -2,7 +2,7 @@
 {
     public class BookService
     {
-        private List<ParametrOfBook> books = new List<ParametrOfBook>
+        private static List<ParametrOfBook> books = new List<ParametrOfBook>
         {
         new ParametrOfBook {Id = 1, Title = "The Lord of the Rings: The Fellowship of the Ring",
                 Author = "J.R.R. Tolkien", Genre = "Fantasy", Year = 1954, Pages = 423, Language = "English"},
