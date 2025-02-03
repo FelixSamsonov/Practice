@@ -11,7 +11,7 @@ namespace Webfirst;
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.TryAddScoped<BookService>();
+            builder.Services.AddScoped<BookService>();
 
             var app = builder.Build();
 

@@ -1,5 +1,4 @@
-﻿using Webfirst.Models;
-namespace Webfirst.Models.Services;
+﻿namespace Webfirst.Models;
 
 public class ParametrOfBook
 {
