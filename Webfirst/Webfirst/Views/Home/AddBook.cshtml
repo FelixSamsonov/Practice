@@ -1,0 +1,35 @@
+﻿@model Webfirst.Models.ParametrOfBook
+
+@{
+	ViewData["Title"] = "Add a New Book";
+}
+
+<h1>Add a New Book</h1>
+
+<form asp-action="AddBook" method = "post">
+	<div>
+		<label for="Title">Title:</label>
+		<input type="text" id="Title" name="Title" value="@Model?.Title" required />
+	</div>
+	<div>
+		<label for="Author">Author:</label>
+		<input type="text" id="Author" name="Author" value="@Model?.Author" required />
+	</div>
+	<div>
+		<label for="Genre">Genre:</label>
+		<input type="text" id="Genre" name="Genre" value="@Model?.Genre" required />
+	</div>
+	<div>
+		<label for="Year">Year:</label>
+		<input type="number" id="Year" name="Year" value="@Model?.Year" required />
+	</div>
+	<div>
+		<label for="Pages">Pages:</label>
+		<input type="number" id="Pages" name="Pages" value="@Model?.Pages" required />
+	</div>
+	<div>
+		<label for="Language">Language:</label>
+		<input type="text" id="Language" name="Language" value="@Model?.Language" required />
+	</div>
+	<button type="submit">AddBook </button>
+</form>
