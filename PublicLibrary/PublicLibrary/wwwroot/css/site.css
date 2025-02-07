@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html lang="en" >
+<head >
+<meta charset="UTF-8" > 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title > Main Page</title >
+
+<style >
+
+body {
+    margin: 0; /* Відсутність відступів у тіла сторінки */
+    font-family: Arial, sans-serif; /* Шрифт сторінки */
+    background-color: #d3d3d3; /* Світло-сірий фон */
+    display: flex; /* Включає Flexbox для управління розташуванням елементів */
+    flex-direction: column; /* Встановлює розташування елементів у вертикальну колонку */
+    justify-content: space-between; /* Розподіляє елементи так, щоб між ними була відстань */
+    height: 100vh; /* Встановлює висоту сторінки рівною висоті екрану */
+}
+
+/* Стилі для верхнього блоку навігації */
+header {
+    display: flex; /* Включає Flexbox для навігації */
+    justify-content: space-between; /* Розташовує посилання зліва та справа */
+    padding: 10px 20px; /* Відступи всередині навігації */
+    background-color: #333; /* Темно-сірий фон */
+}
+
+    /* Стилі для посилань у навігації */
+    header a {
+        text-decoration: none; /* Прибирає підкреслення у посиланнях */
+        color: white; /* Білий колір тексту */
+        margin-right: 10px; /* Відступ між посиланнями */
+    }
+
+/* Основний контент сторінки */
+.main-content {
+    text-align: center; /* Центрує текст по горизонталі */
+    flex-grow: 1; /* Дозволяє основному блоку займати весь доступний простір */
+    display: flex; /* Включає Flexbox */
+    flex-direction: column; /* Елементи розташовані вертикально */
+    justify-content: center; /* Центрує текст по вертикалі */
+}
+
+    /* Стилі для заголовка на головній сторінці */
+    .main-content h1 {
+        font-size: 48px; /* Розмір шрифту */
+        font-weight: bold; /* Жирний текст */
+    }
+
+/* Нижній блок (підвал сторінки) */
+footer {
+    text-align: center; /* Текст центрується по горизонталі */
+    padding: 10px 0; /* Відступи зверху та знизу */
+    background-color: #333; /* Темно-сірий фон */
+    color: white; /* Білий текст */
+}
+
+</style >
+</head >
+<body >
+<header >
+<a href="#main" > Main</a >
+<a href="#feedback" > FeedBack</a > 
+<div class="main-content" >
+<h1 > main Page</h1 > 
+</div >
+<footer >
+All rights reserved 
+</footer >
+</body >
+</html >

@@ -12,12 +12,11 @@ public class HomeController : Controller
         {
             _bookService = bookService;
         }
-    [HttpGet]
 
     public IActionResult Index()
     {
-        var books = _bookService.GetAllBooks();
-        return View(books);
+        var book = _bookService.GetAllBooks();
+        return View(book);
     }
     [HttpGet]
     public IActionResult AddBook()
@@ -27,14 +26,14 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AddBook(ParametrOfBook newBook)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             _bookService.AddBook(newBook);
             return RedirectToAction("Index");
         }
         return View(newBook);
     }
-    [HttpGet]
+
     public IActionResult EditBook(int id)
     {
         var book = _bookService.GetBookById(id);
@@ -44,8 +43,8 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult EditBook(ParametrOfBook updateBook)
     {
-        if(ModelState.IsValid)
-         _bookService.UpdateBook(updateBook);
+        if (ModelState.IsValid)
+            _bookService.UpdateBook(updateBook);
         return RedirectToAction("Index");
     }
     [HttpPost]
