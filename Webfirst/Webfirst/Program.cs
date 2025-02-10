@@ -5,6 +5,8 @@ using Webfirst.Data;
 using Webfirst.Models;
 using Webfirst.Models.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Webfirst.Services;
 
 
 namespace Webfirst;
@@ -23,11 +25,11 @@ public class Program
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
      .AddEntityFrameworkStores<ApplicationDbContext>() 
      .AddDefaultTokenProviders();
+        builder.Services.AddSingleton<IEmailSender, FakeEmailSender>();
 
-
+        builder.Services.AddRazorPages();
 
         var app = builder.Build();
-
 
         if (!app.Environment.IsDevelopment())
         {
@@ -37,8 +39,6 @@ public class Program
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
-
 
         app.UseRouting();
         app.UseAuthentication();

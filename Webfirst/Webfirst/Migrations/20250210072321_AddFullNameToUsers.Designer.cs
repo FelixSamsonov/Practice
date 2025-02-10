@@ -12,8 +12,8 @@ using Webfirst.Data;
 namespace Webfirst.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250208053316_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20250210072321_AddFullNameToUsers")]
+    partial class AddFullNameToUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
